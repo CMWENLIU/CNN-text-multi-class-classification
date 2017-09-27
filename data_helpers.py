@@ -111,9 +111,14 @@ def load_data_labels(datasets):
     x_text = [clean_str(sent) for sent in x_text]
     # Generate labels
     labels = []
+    print(len(x_text))
     for i in range(len(x_text)):
-        label = [0 for j in datasets['target_names']]
-        label[datasets['target'][i]] = 1
+        label = [0 for j in datasets['business_examples']]
+        label = [1 for j in datasets['enter_examples']]
+        label = [2 for j in datasets['politics_examples']]
+        label = [3 for j in datasets['sport_examples']]
+        label = [4 for j in datasets['tech_examples']]
+        #label[datasets['target'][i]] = 1
         labels.append(label)
     y = np.array(labels)
     return [x_text, y]

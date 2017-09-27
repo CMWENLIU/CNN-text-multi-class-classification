@@ -60,7 +60,7 @@ else:
 print("Loading data...")
 datasets = None
 if dataset_name == "textinline":
-    datasets = data_helpers.get_datasets_mrpolarity(cfg["datasets"][dataset_name]["business_data_file"]["path"],
+    datasets = data_helpers.get_datasets_textinline(cfg["datasets"][dataset_name]["business_data_file"]["path"],
                                                     cfg["datasets"][dataset_name]["enter_data_file"]["path"],
                                                     cfg["datasets"][dataset_name]["politics_data_file"]["path"],
                                                     cfg["datasets"][dataset_name]["sport_data_file"]["path"],
