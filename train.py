@@ -27,9 +27,9 @@ tf.flags.DEFINE_float("l2_reg_lambda", 0.0, "L2 regularization lambda (default: 
 
 # Training parameters
 tf.flags.DEFINE_integer("batch_size", 64, "Batch Size (default: 64)")
-tf.flags.DEFINE_integer("num_epochs", 100, "Number of training epochs (default: 200)")
-tf.flags.DEFINE_integer("evaluate_every", 100, "Evaluate model on dev set after this many steps (default: 100)")
-tf.flags.DEFINE_integer("checkpoint_every", 100, "Save model after this many steps (default: 100)")
+tf.flags.DEFINE_integer("num_epochs", 80, "Number of training epochs (default: 200)")
+tf.flags.DEFINE_integer("evaluate_every", 80, "Evaluate model on dev set after this many steps (default: 100)")
+tf.flags.DEFINE_integer("checkpoint_every", 80, "Save model after this many steps (default: 100)")
 tf.flags.DEFINE_integer("num_checkpoints", 5, "Number of checkpoints to store (default: 5)")
 # Misc Parameters
 tf.flags.DEFINE_boolean("allow_soft_placement", True, "Allow device soft device placement")
@@ -59,9 +59,12 @@ else:
 # Load data
 print("Loading data...")
 datasets = None
-if dataset_name == "mrpolarity":
-    datasets = data_helpers.get_datasets_mrpolarity(cfg["datasets"][dataset_name]["positive_data_file"]["path"],
-                                                    cfg["datasets"][dataset_name]["negative_data_file"]["path"])
+if dataset_name == "textinline":
+    datasets = data_helpers.get_datasets_mrpolarity(cfg["datasets"][dataset_name]["business_data_file"]["path"],
+                                                    cfg["datasets"][dataset_name]["enter_data_file"]["path"],
+                                                    cfg["datasets"][dataset_name]["politics_data_file"]["path"],
+                                                    cfg["datasets"][dataset_name]["sport_data_file"]["path"],
+                                                    cfg["datasets"][dataset_name]["tech_data_file"]["path"])
 elif dataset_name == "20newsgroup":
     datasets = data_helpers.get_datasets_20newsgroup(subset="train",
                                                      categories=cfg["datasets"][dataset_name]["categories"],

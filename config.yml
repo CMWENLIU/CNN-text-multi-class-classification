@@ -13,14 +13,23 @@ word_embeddings:
 
 datasets:
   # Support currently 3 datasets: mrpolarity, 20newsgroup and localdata
-  default: mrpolarity
-  mrpolarity:
-    positive_data_file:
-      path: "data/rt-polaritydata/rt-polarity.pos"
-      info: "Data source for the positive data"
-    negative_data_file:
-      path: "data/rt-polaritydata/rt-polarity.neg"
-      info: "Data source for the negative data"
+  default: textinline
+  textinline:
+    business_data_file:
+      path: "/home/sheep/bigdata/classification/business.txt"
+      info: "Data source for the business data"
+    enter_data_file:
+      path: "/home/sheep/bigdata/classification/enter.txt"
+      info: "Data source for the enter data"
+    politics_data_file:
+      path: "/home/sheep/bigdata/classification/politics.txt"
+      info: "Data source for the politics data"
+    sport_data_file:
+      path: "/home/sheep/bigdata/classification/sport.txt"
+      info: "Data source for the sport data"
+    tech_data_file:
+      path: "/home/sheep/bigdata/classification/tech.txt"
+      info: "Data source for the tech data"
   20newsgroup:
     # The dataset includes following 20 newsgroups:
     # alt.atheism, comp.windows.x, rec.sport.hockey, soc.religion.christian

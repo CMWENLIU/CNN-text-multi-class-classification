@@ -58,22 +58,28 @@ def get_datasets_20newsgroup(subset='train', categories=None, shuffle=True, rand
     return datasets
 
 
-def get_datasets_mrpolarity(positive_data_file, negative_data_file):
+def get_datasets_textinline(business_data_file, enter_data_file, politics_data_file, sport_data_file, tech_data_file):
     """
-    Loads MR polarity data from files, splits the data into words and generates labels.
+    Loads textinline data from files, splits the data into words and generates labels.
     Returns split sentences and labels.
     """
     # Load data from files
-    positive_examples = list(open(positive_data_file, "r").readlines())
-    positive_examples = [s.strip() for s in positive_examples]
-    negative_examples = list(open(negative_data_file, "r").readlines())
-    negative_examples = [s.strip() for s in negative_examples]
+    business_examples = list(open(business_data_file, "r").readlines())
+    business_examples = [s.strip() for s in business_examples]
+    enter_examples = list(open(enter_data_file, "r").readlines())
+    enter_examples = [s.strip() for s in enter_examples]
+    politics_examples = list(open(politics_data_file, "r").readlines())
+    politics_examples = [s.strip() for s in politics_examples]
+    sport_examples = list(open(sport_data_file, "r").readlines())
+    sport_examples = [s.strip() for s in sport_examples]
+    tech_examples = list(open(tech_data_file, "r").readlines())
+    tech_examples = [s.strip() for s in tech_examples]
 
     datasets = dict()
-    datasets['data'] = positive_examples + negative_examples
-    target = [0 for x in positive_examples] + [1 for x in negative_examples]
+    datasets['data'] = business_examples + enter_examples + politics_examples + sport_examples + tech_examples
+    target = [0 for x in business_examples] + [1 for x in enter_examples] + [2 for x in politics_examples] + [3 for x in sport_examples] + [4 for x in tech_examples]
     datasets['target'] = target
-    datasets['target_names'] = ['positive_examples', 'negative_examples']
+    datasets['target_names'] = ['business_examples', 'enter_examples' + 'politics_examples' + 'sport_examples' + 'tech_examples']
     return datasets
 
 
