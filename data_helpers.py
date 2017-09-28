@@ -8,7 +8,7 @@ def clean_str(string):
     """
     Tokenization/string cleaning for all datasets except for SST.
     Original taken from https://github.com/yoonkim/CNN_sentence/blob/master/process_data.py
-    """
+    
     string = re.sub(r"[^A-Za-z0-9(),!?\'\`]", " ", string)
     string = re.sub(r"\'s", " \'s", string)
     string = re.sub(r"\'ve", " \'ve", string)
@@ -23,7 +23,9 @@ def clean_str(string):
     string = re.sub(r"\?", " \? ", string)
     string = re.sub(r"\s{2,}", " ", string)
     return string.strip().lower()
-
+    """
+    #just return string if already cleaned
+    return string
 
 def batch_iter(data, batch_size, num_epochs, shuffle=True):
     """
@@ -79,7 +81,7 @@ def get_datasets_textinline(business_data_file, enter_data_file, politics_data_f
     datasets['data'] = business_examples + enter_examples + politics_examples + sport_examples + tech_examples
     target = [0 for x in business_examples] + [1 for x in enter_examples] + [2 for x in politics_examples] + [3 for x in sport_examples] + [4 for x in tech_examples]
     datasets['target'] = target
-    datasets['target_names'] = ['business_examples', 'enter_examples' + 'politics_examples' + 'sport_examples' + 'tech_examples']
+    datasets['target_names'] = ['business_examples', 'enter_examples', 'politics_examples', 'sport_examples', 'tech_examples']
     return datasets
 
 
@@ -113,14 +115,12 @@ def load_data_labels(datasets):
     labels = []
     print(len(x_text))
     for i in range(len(x_text)):
-        label = [0 for j in datasets['business_examples']]
-        label = [1 for j in datasets['enter_examples']]
-        label = [2 for j in datasets['politics_examples']]
-        label = [3 for j in datasets['sport_examples']]
-        label = [4 for j in datasets['tech_examples']]
-        #label[datasets['target'][i]] = 1
+        label = [0 for j in datasets['target_names']]        
+        label[datasets['target'][i]] = 1
         labels.append(label)
     y = np.array(labels)
+    np.savetxt('test.out', y, delimiter=',')  
+    print (y)
     return [x_text, y]
 
 
