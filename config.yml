@@ -1,14 +1,14 @@
 word_embeddings:
   # Two types of word embedding algorithm (word2vec and glove) are supported.
   # Just set the default to empty string to disable the word embeddings
-  default: 
+  default: glove
   word2vec:
     path: ../../data/input/word_embeddings/GoogleNews-vectors-negative300.bin
     dimension: 300
     binary: True
   glove:
-    path: ../../data/glove.6B.100d.txt
-    dimension: 100
+    path: '/home/sheep/bigdata/d7000/myglove.glove'
+    dimension: 25
     length: 400000
 
 datasets:
@@ -16,19 +16,19 @@ datasets:
   default: textinline
   textinline:
     business_data_file:
-      path: "/home/sheep/bigdata/classification/business.txt"
+      path: "/home/sheep/bigdata/d7000/business.txt"
       info: "Data source for the business data"
     enter_data_file:
-      path: "/home/sheep/bigdata/classification/enter.txt"
+      path: "/home/sheep/bigdata/d7000/enter.txt"
       info: "Data source for the enter data"
     politics_data_file:
-      path: "/home/sheep/bigdata/classification/politics.txt"
+      path: "/home/sheep/bigdata/d7000/politics.txt"
       info: "Data source for the politics data"
     sport_data_file:
-      path: "/home/sheep/bigdata/classification/sport.txt"
+      path: "/home/sheep/bigdata/d7000/sport.txt"
       info: "Data source for the sport data"
     tech_data_file:
-      path: "/home/sheep/bigdata/classification/tech.txt"
+      path: "/home/sheep/bigdata/d7000/tech.txt"
       info: "Data source for the tech data"
   20newsgroup:
     # The dataset includes following 20 newsgroups:
