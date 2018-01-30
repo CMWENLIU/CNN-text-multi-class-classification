@@ -1,34 +1,34 @@
 word_embeddings:
   # Two types of word embedding algorithm (word2vec and glove) are supported.
   # Just set the default to empty string to disable the word embeddings
-  default:
+  default: glove
   word2vec:
     path: ../../data/input/word_embeddings/GoogleNews-vectors-negative300.bin
     dimension: 300
     binary: True
   glove:
-    path: '/home/sheep/bigdata/d7000/myglove.glove'
-    dimension: 25
-    length: 400000
+    path: '/home/xxliu10/bigdata/wordemb/vec_200.txt'
+    dimension: 200
+    length:
 
 datasets:
   # Support currently 3 datasets: mrpolarity, 20newsgroup and localdata
   default: textinline
   textinline:
     business_data_file:
-      path: "/home/sheep/bigdata/classification/originnewsdata/business.txt"
+      path: "/home/xxliu10/bigdata/allNews/bbcready/b.txt"
       info: "Data source for the business data"
     enter_data_file:
-      path: "/home/sheep/bigdata/classification/originnewsdata/enter.txt"
+      path: "/home/xxliu10/bigdata/allNews/bbcready/e.txt"
       info: "Data source for the enter data"
     politics_data_file:
-      path: "/home/sheep/bigdata/classification/originnewsdata/politics.txt"
+      path: "/home/xxliu10/bigdata/allNews/bbcready/p.txt"
       info: "Data source for the politics data"
     sport_data_file:
-      path: "/home/sheep/bigdata/classification/originnewsdata/sport.txt"
+      path: "/home/xxliu10/bigdata/allNews/bbcready/s.txt"
       info: "Data source for the sport data"
     tech_data_file:
-      path: "/home/sheep/bigdata/classification/originnewsdata/tech.txt"
+      path: "/home/xxliu10/bigdata/allNews/bbcready/t.txt"
       info: "Data source for the tech data"
   20newsgroup:
     # The dataset includes following 20 newsgroups:
